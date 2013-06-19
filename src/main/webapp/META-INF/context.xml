@@ -15,13 +15,13 @@
   -->
 <Context>
     <Resource
-            name="jdbc/my-db"
+            name="jdbc/nagademo"
             auth="Container"
             type="javax.sql.DataSource"
 
-            url="jdbc:mysql://ec2-50-19-213-178.compute-1.amazonaws.com/chat-demo-java"
-            username="nagazumi"
-            password="pp71388"
+            url="jdbc:mysql://ec2-50-19-213-178.compute-1.amazonaws.com/naga_demo"
+            username="demo001"
+            password="demo001"
 
             driverClassName="com.mysql.jdbc.Driver"
 
