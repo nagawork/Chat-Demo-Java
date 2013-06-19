@@ -27,7 +27,7 @@ public class ChatDemoServlet extends HttpServlet {
   public void init() throws ServletException {
     try{
       Context context = new InitialContext();
-      dataSource = (DataSource)context.lookup("java:comp/env/jdbc/naga-demo");
+      dataSource = (DataSource)context.lookup("java:comp/env/jdbc/my-db");
     } catch (NamingException e) {
       throw new ServletException(e);
     }

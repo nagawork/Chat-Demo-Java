@@ -8,7 +8,7 @@
 
     <%
         Context ctx = new InitialContext();
-        DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/naga-demo");
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/my-db");
         Connection conn = ds.getConnection();
         Statement stmt = conn.createStatement();
         String sql = "select ChatName, ChatMesg, DATE_FORMAT(ChatDate, \'%Y/%m/%d %k:%i:%s\') "

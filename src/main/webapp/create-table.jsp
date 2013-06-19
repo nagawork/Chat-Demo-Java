@@ -9,7 +9,7 @@
 <h1>CreateDemo</h1>
     <%
         Context ctx = new InitialContext();
-        DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/naga-demo");
+        DataSource ds = (DataSource) ctx.lookup("java:comp/env/jdbc/my-db");
         Connection conn = ds.getConnection();
         Statement stmt = conn.createStatement();
         stmt.executeUpdate(
