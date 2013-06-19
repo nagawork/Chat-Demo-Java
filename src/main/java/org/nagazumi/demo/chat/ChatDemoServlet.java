@@ -1,14 +1,7 @@
-package org.nagazumi.demo;
+package org.nagazumi.demo.chat;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 /**
  * Demo program for SAH Study Vol.2
@@ -17,18 +10,18 @@ import java.sql.SQLException;
 public class ChatDemoServlet extends HttpServlet {
 
   // JDBC Driver Datasource
-  private DataSource dataSource = null;
+  private ChatDemo chatdemo = null;
 
- /**
-  *
-  * Initial Servlet
-  *
-  */
+  /**
+   *
+   * Initial Servlet
+   *
+   */
   public void init() throws ServletException {
+    chatdemo = new ChatDemo();
     try{
-      Context context = new InitialContext();
-      dataSource = (DataSource)context.lookup("java:comp/env/jdbc/my-db");
-    } catch (NamingException e) {
+      chatdemo.initChatDemo();
+    } catch (Exception e) {
       throw new ServletException(e);
     }
   }
@@ -53,31 +46,21 @@ public class ChatDemoServlet extends HttpServlet {
     request.setCharacterEncoding("utf-8");
     
     // Get Parameter
-    String chat_nam = request.getParameter("chat_nam");
-    if (chat_nam == null || chat_nam.length() == 0){
-      RequestDispatcher dispatcher = request.getRequestDispatcher(forward_url);
-      dispatcher.forward(request, response);
-      return;
-    }
-    String chat_msg = request.getParameter("chat_msg");
-    if (chat_msg == null || chat_msg.length() == 0){
+    ChatData data = new ChatData();
+    data.setName(request.getParameter("chat_nam"));
+    data.setMesg(request.getParameter("chat_msg"));
+
+    // Check Parameter
+    if (data.checkPostData() == false){
       RequestDispatcher dispatcher = request.getRequestDispatcher(forward_url);
       dispatcher.forward(request, response);
       return;
     }
 
-    // Store Data Base
+    // Store Data
     try {
-      Connection conn = dataSource.getConnection();
-      String sql = "insert into DEMO_CHAT (ChatName, ChatMesg, ChatDate) values (?, ?, now())";
-      PreparedStatement stmt = conn.prepareStatement(sql);
-      stmt.setString(1,chat_nam);
-      stmt.setString(2,chat_msg);
-      stmt.executeUpdate();
-      stmt.close();
-      conn.close();
-    }
-    catch (SQLException e) {
+      chatdemo.insertChatData(data);
+    } catch (Exception e) {
       throw new ServletException(e);
     }
 

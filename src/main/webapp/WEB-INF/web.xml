@@ -21,7 +21,7 @@
   
   <servlet>
     <servlet-name>chatDemo</servlet-name>
-    <servlet-class>org.nagazumi.demo.ChatDemoServlet</servlet-class>
+    <servlet-class>org.nagazumi.demo.chat.ChatDemoServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>chatDemo</servlet-name>
