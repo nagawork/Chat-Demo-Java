@@ -19,9 +19,9 @@
             auth="Container"
             type="javax.sql.DataSource"
 
-            url="jdbc:mysql://ec2-50-19-213-178.compute-1.amazonaws.com/naga_demo"
-            username="demo001"
-            password="demo001"
+            url="jdbc:${DATABASE_URL_TOMCAT7_MAVEN_CLICKSTART_DB}"
+            username="${DATABASE_USERNAME_TOMCAT7_MAVEN_CLICKSTART_DB}"
+            password="${DATABASE_PASSWORD_TOMCAT7_MAVEN_CLICKSTART_DB}"
 
             driverClassName="com.mysql.jdbc.Driver"
 
