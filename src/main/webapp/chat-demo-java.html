@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="utf-8" />
+  <title>Simple Chat Demo</title>
+  <script type="text/javascript">
+
+var post_url = "/demoChat";
+var get_url = "/get-chat-mesages.jsp";
+var xmlhttp = null;
+
+window.onload=function(){
+  // Submit Form Action
+  document.getElementById("chat_form").onsubmit = function(e) {
+    chat_name = document.getElementById("chat_nam");
+    chat_message = document.getElementById("chat_msg");
+    chat = "chat_nam=" + chat_name.value + "&chat_msg=" + chat_message.value;
+
+    e.preventDefault();
+    sendMessage(chat);
+    chat_message.value="";
+  }
+
+  // Reflesh timer (each3sec)
+  timerID = setInterval(function(){
+    getMessage()
+  }, 3000);
+}
+
+// Show Chat data
+function returnDataSHow(){
+  if ((xmlhttp) && (xmlhttp.readyState == 4)){
+    document.getElementById("chat_data").innerHTML=xmlhttp.responseText;
+    xmlhttp = null;
+  }
+}
+
+// Send Chat Data
+function sendMessage(chat){
+  xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = returnDataSHow;
+  xmlhttp.open("POST", post_url, true);
+  xmlhttp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+  xmlhttp.send(chat);
+}
+
+// Get Chat data
+function getMessage(){
+  xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = returnDataSHow;
+  xmlhttp.open("GET", get_url, true);
+  xmlhttp.send(null);
+}
+
+  </script>
+</head>
+<body>
+  <h1>Simple Chat Demo</h1>
+  <div>
+    <form id="chat_form" method="post" name="chat_form">
+      <input id="chat_nam" maxlength="32" name="chat_nam" size="16" type="text" />
+      <input id="chat_msg" maxlength="256" name="chat_msg" size="50" type="text" />
+      <input id="chat_smt" name="chat_smt" type="submit" value="送信" />
+    </form>
+  </div>
+  <br />
+  <hr />
+  <!-- Area for  Chat data -->
+  <div id="chat_data"></div>
+</body>
+</html>
