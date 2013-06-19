@@ -15,7 +15,7 @@
   -->
 <Context>
     <Resource
-            name="jdbc/nagademo"
+            name="jdbc/my-db"
             auth="Container"
             type="javax.sql.DataSource"
 
