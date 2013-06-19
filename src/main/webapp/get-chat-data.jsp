@@ -11,6 +11,6 @@
         for (ChatData data: array) {
           out.print("<br/><span style=\'color:red;\'>" + data.getName() + "</span>");
           out.print(" &gt; " + data.getMesg());
-          out.print(" <span style=\'color:gray;\'>(" + data.getDate() + ")</span>");
+          out.print(" <span style=\'color:green;\'>(" + data.getDate() + ")</span>");
         }
     %>
