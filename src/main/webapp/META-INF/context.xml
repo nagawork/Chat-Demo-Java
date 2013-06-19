@@ -19,9 +19,9 @@
             auth="Container"
             type="javax.sql.DataSource"
 
-            url="jdbc:mysql://ec2-50-19-213-178.compute-1.amazonaws.com:3306/chat-demo-java"
+            url="jdbc:mysql://ec2-50-19-213-178.compute-1.amazonaws.com/chat-demo-java"
             username="nagazumi"
-            password="naoki5903"
+            password="pp71388"
 
             driverClassName="com.mysql.jdbc.Driver"
 
