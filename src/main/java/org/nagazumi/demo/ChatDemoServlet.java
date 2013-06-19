@@ -46,7 +46,7 @@ public class ChatDemoServlet extends HttpServlet {
     throws IOException, ServletException {
 
     // URL for Chat data get Service
-    String forward_url = "/get-chat-mesages.jsp";
+    String forward_url = "/get-chat-data.jsp";
 
     // Set CharacterSet
     // response.setContentType("text/html; charset=utf-8");

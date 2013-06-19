@@ -4,4 +4,21 @@
 
 <web-app>
   <display-name>Web Application Created With eXo IDE</display-name>
+  
+  
+  <servlet>
+    <servlet-name>chatDemo</servlet-name>
+    <servlet-class>org.nagazumi.demo.ChatDemoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>chatDemo</servlet-name>
+    <url-pattern>/chatDemo</url-pattern>
+  </servlet-mapping>
+  
+  <resource-ref>
+    <res-ref-name>jdbc/naga-demo</res-ref-name>
+    <res-type>javax.sql.DataSource</res-type>
+    <res-auth>Container</res-auth>
+  </resource-ref>
+  
 </web-app>
