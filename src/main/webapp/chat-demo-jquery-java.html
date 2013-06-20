@@ -11,6 +11,9 @@ var get_url = "/get-chat-data.jsp";
 
 $(function() {
 
+  // Get and Disp Chat Data
+  $("#chat_data").load(get_url)
+
   // Send Chat Data Event
   $("#chat_form").on("submit", function(event) {
 
@@ -25,7 +28,7 @@ $(function() {
     $("#chat_msg").val("");
   });
   
-  // Timer Event every 3sec to Get Chat data
+  // Timer Event every 3sec to Get and Disp Chat data
   timerID = setInterval(function() { $("#chat_data").load(get_url) }, 3000);
 
 });
