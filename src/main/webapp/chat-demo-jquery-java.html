@@ -12,28 +12,20 @@ var get_url = "/get-chat-data.jsp";
 $(function() {
 
   // Send Chat Data Event
-  $("#send_btn").on("click", function() {
+  $("#chat_form").on("submit", function() {
 
     // Send Chat Data
     chat = "chat_nam=" +$("#chat_nam").val() + "&chat_msg=" + $("#chat_msg").val();
-    sendMessage(chat);
+    $.post(post_url, chat, function(data) { $("#chat_data").html(data); });
 
     // Clear Message
     $("#chat_msg").val("");
   });
   
-  // Send Timer Event every 3sec
+  // Timer Event every 3sec to Get Chat data
   timerID = setInterval(function() { $("#chat_data").load(get_url) }, 3000);
+
 });
-
-function sendMessage(chat) {
-  $.post(post_url, chat, function(data) { $("#chat_data").html(data); });
-}
-
-// Get Chat data
-function getMessage() {
-  $("#chat_data").load(get_url);
-}
 
   </script>
 </head>
@@ -43,7 +35,7 @@ function getMessage() {
     <form id="chat_form" method="post" name="chat_form">
       <input id="chat_nam" maxlength="32" name="chat_nam" size="16" type="text" />
       <input id="chat_msg" maxlength="256" name="chat_msg" size="50" type="text" />
-      <input id="send_btn" name="send_btn" type="button" value="送信" />
+      <input id="send_btn" name="send_btn" type="submit" value="送信" />
       <input id="dell_btn" name="dell_btn" type="button" value="データ削除" />
     </form>
   </div>
