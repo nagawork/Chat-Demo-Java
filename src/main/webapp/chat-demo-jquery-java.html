@@ -13,11 +13,9 @@ $(function() {
 
   // Send Chat Data Event
   $("#send_btn").on("click", function() {
-    chat_name = $("#chat_nam").val();
-    chat_mesg = $("#chat_msg").val();
-    chat = "chat_nam=" + chat_name.value + "&chat_msg=" + chat_message.value;
 
     // Send Chat Data
+    chat = "chat_nam=" +$("#chat_nam").val() + "&chat_msg=" + $("#chat_msg").val();
     sendMessage(chat);
 
     // Clear Message
