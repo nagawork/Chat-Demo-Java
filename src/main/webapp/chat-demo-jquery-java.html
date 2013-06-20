@@ -12,7 +12,10 @@ var get_url = "/get-chat-data.jsp";
 $(function() {
 
   // Send Chat Data Event
-  $("#chat_form").on("submit", function() {
+  $("#chat_form").on("submit", function(event) {
+
+    // Block form event
+    event.preventDefault();
 
     // Send Chat Data
     chat = "chat_nam=" +$("#chat_nam").val() + "&chat_msg=" + $("#chat_msg").val();
