@@ -50,7 +50,7 @@ public class ChatDemo
       ArrayList<ChatData> array = new ArrayList<ChatData>();
 
       String sql = "select ChatName, ChatMesg, DATE_FORMAT(ChatDate, \'%Y/%m/%d %k:%i:%s\') "
-          + " from DEMO_CHAT order by ChatDate desc";
+          + " from DEMO_CHAT order by ChatDate";
 
       try {
         Connection conn = dataSource.getConnection();
